@@ -1,0 +1,19 @@
+body{
+    padding: 15px;
+    max-width: 640px;
+    margin: 0 auto;
+    color: #666;
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "WenQuanYi Micro Hei", SimSun, Song, sans-serif;
+}
+img{
+    display: block;
+    margin: 10px auto 30px;
+    vertical-align: middle;
+    max-width: 100%;
+}
+sub,sup{
+    color: #a49ca7;
+}
+h3{
+    color: #333;
+}

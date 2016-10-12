@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+</head>
+<body ng-app="app" ng-controller="app1" class="container">
+<form name="form">
+    <input type="date" placeholder="请选择开始时间" ng-model="startDate">至
+    <input type="date" placeholder="请选择结束时间" ng-model="endDate">
+    <input type="button" value="查询" ng-click="search()">
+</form>
+<table class="table table-hover table-striped">
+    <tr>
+        <td>供应商</td>
+        <td>姓名</td>
+        <td>日期</td>
+        <td>上班时间</td>
+        <td>下班时间</td>
+    </tr>
+    <tr ng-repeat="item in items">
+        <td>文思海辉</td>
+        <td>{{name}}</td>
+        <td>{{item.Kqdatetime}}</td>
+        <td>{{item.Elarycardtime.substr(10,9)}}</td>
+        <td>{{item.Latecardtime.substr(10,9)}}</td>
+    </tr>
+</table>
+
+
+
+
+<script src="http://cdn.bootcss.com/angular.js/1.4.8/angular.js"></script>
+<script>
+
+
+
+    var app = angular.module("app",[]);
+    app.controller("app1",function($scope){
+        $scope.search = function(){
+            var startDate = $scope.startDate.toLocaleDateString().substr(0,10);
+            var endDate = $scope.endDate.toLocaleDateString().substr(0,10);
+            var url = "http://ehr.midea.com.cn/midea/personalinfo/dataservices.do?jsonpcallback=callback&state=getInfosPortal&serviceType=getAttendancdInfo&startDate="+startDate+"&endDate="+endDate;
+            var script = document.createElement('script');
+            script.src = url;
+            document.getElementsByTagName('body')[0].appendChild(script);
+            window.callback = function(res){
+                $scope.items = res.resultList;
+                $scope.name = res.userName;
+                console.log($scope.items);
+                $scope.$digest();
+            };
+        }
+    });
+
+
+</script>
+</body>
+</html>
