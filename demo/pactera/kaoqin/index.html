@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
 </head>
 <body ng-app="app" ng-controller="app1" class="container">
+<p style="color: #f00;">*使用步骤：1.在下方窗口中登录mip账号；2.选择开始和结束日期后点击查询；3.复制查询结果到excel中Ctrl+Alt+V选择‘无格式文本’确定即可</p>
 <form name="form">
     <input type="date" placeholder="请选择开始时间" ng-model="startDate">至
     <input type="date" placeholder="请选择结束时间" ng-model="endDate">
@@ -27,10 +28,15 @@
         <td>{{item.Latecardtime.substr(10,9)}}</td>
     </tr>
 </table>
+<iframe style="margin-top: 100px;" width="100%" height="500px" src="http://mip.midea.com/index.jsp" frameborder="0"></iframe>
 
 
-
-
+<footer>
+    <p><a href="https://byc1990.github.io/demo/pactera/leave/">请假指引</a></p>
+    <p><a href="https://byc1990.github.io/demo/pactera/clock/">打卡指引</a></p>
+    <p><a href="http://pan.baidu.com/s/1eSqLmDW">美的刷卡打印机驱动及使用方法</a></p>
+    <p><a href="https://byc1990.github.io/demo/pactera/kaoqin/">考勤明细查询</a></p>
+</footer>
 <script src="http://cdn.bootcss.com/angular.js/1.4.8/angular.js"></script>
 <script>
 
